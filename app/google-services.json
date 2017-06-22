@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "104488583675",
+    "firebase_url": "https://slumeducation-114f7.firebaseio.com",
+    "project_id": "slumeducation-114f7",
+    "storage_bucket": "slumeducation-114f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104488583675:android:43d3c2a1f839c833",
+        "android_client_info": {
+          "package_name": "com.example.umarkhan.slumeducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104488583675-fnuour6t7o0h1sogpo6bho9m45uibv3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.umarkhan.slumeducation",
+            "certificate_hash": "22449b063b94fa2491483bb137c78a4dbed0ccfd"
+          }
+        },
+        {
+          "client_id": "104488583675-ffacvgq03t9kqd1repuna54h8ojnqvss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzmI6FUeZCnD3aQKRDLpFx18FGvuiAHf4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104488583675-ffacvgq03t9kqd1repuna54h8ojnqvss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
