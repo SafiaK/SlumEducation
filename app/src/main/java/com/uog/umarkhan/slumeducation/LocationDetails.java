@@ -1,4 +1,4 @@
-package com.example.umarkhan.slumeducation;
+package com.uog.umarkhan.slumeducation;
 
 import java.io.Serializable;
 
@@ -8,20 +8,40 @@ import java.io.Serializable;
 
 public class LocationDetails implements Serializable{
 
-    String id, name,location,description,imageUrl,noOfChildren;
+    String id, name,location,description,imageUrl,noOfChildren,phone,volunteerName,volunteerPhone;
     Double longitude, latitude;
 
     public LocationDetails() {
     }
 
-    public LocationDetails(String id,String name, String location, String description,String imageUrl, String noOfChildren) {
+    public LocationDetails(String id,String name, String location, String description,String imageUrl, String noOfChildren, String phone,String volunteerName,String volunteerPhone) {
         this.id=id;
         this.name = name;
         this.location=location;
         this.description = description;
         this.imageUrl=imageUrl;
         this.noOfChildren = noOfChildren;
+        this.phone=phone;
+        this.volunteerName=volunteerName;
+        this.volunteerPhone=volunteerPhone;
 
+
+    }
+
+    public String getVolunteerName() {
+        return volunteerName;
+    }
+
+    public void setVolunteerName(String volunteerName) {
+        this.volunteerName = volunteerName;
+    }
+
+    public String getVolunteerPhone() {
+        return volunteerPhone;
+    }
+
+    public void setVolunteerPhone(String volunteerPhone) {
+        this.volunteerPhone = volunteerPhone;
     }
 
     public Double getLongitude() {

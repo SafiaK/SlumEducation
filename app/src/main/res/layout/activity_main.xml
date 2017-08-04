@@ -4,65 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.umarkhan.slumeducation.MainActivity"
+    tools:context="com.uog.umarkhan.slumeducation.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+
+
+
+
     <Button
         android:id="@+id/button1"
-        android:layout_width="86dp"
-        android:layout_height="40dp"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
 
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Upload"
-        tools:ignore="HardcodedText"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/textView7"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionEditText"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintVertical_bias="0.52" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="-30dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="ContentDescription,RtlHardcoded"
-        android:layout_marginRight="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.48" />
+        app:layout_constraintTop_toBottomOf="@+id/DescriptionEditText"
+        app:layout_constraintVertical_bias="0.38"
+        tools:ignore="HardcodedText"
+        app:layout_constraintLeft_toLeftOf="@+id/textView7" />
 
     <Button
         android:id="@+id/details"
-        android:layout_width="74dp"
-        android:layout_height="50dp"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimaryDark"
         android:text="View Location"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button1"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintLeft_toRightOf="@+id/LocEditText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagEText"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText,SmallSp" />
+        app:layout_constraintVertical_bias="0.063"
+        tools:ignore="HardcodedText,RtlHardcoded,SmallSp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/flagEText"
@@ -82,31 +72,38 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/LocEditText"
-        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView1"
-        app:layout_constraintVertical_bias="0.933"
-        tools:ignore="HardcodedText,LabelFor,UnusedAttribute" />
+
+        app:layout_constraintVertical_bias="0.85"
+        tools:ignore="HardcodedText,LabelFor,RtlHardcoded,UnusedAttribute"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp" />
 
     <ScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="304dp"
+        android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="27dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toTopOf="@+id/flagEText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintVertical_bias="0.551">
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintVertical_bias="0.32999998"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintHorizontal_bias="0.51">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="8dp"
@@ -116,10 +113,9 @@
                 android:id="@+id/ScrolltextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This App is Created to Collect Data For Slum Education.
-               Please Help !"
+                android:text=""
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textStyle="italic"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
@@ -132,36 +128,45 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
         android:text="Name:"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/flagEText"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/flagEText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/flagEText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        app:layout_constraintVertical_bias="0.192"
+        tools:ignore="HardcodedText,RtlHardcoded"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
         android:text="Location:"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/LocEditText"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LocEditText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/LocEditText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintVertical_bias="0.324"
+        tools:ignore="HardcodedText"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -170,18 +175,19 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-
         android:text="No. of Children:"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
+        android:textSize="14sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.215"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        app:layout_constraintVertical_bias="0.100000024"
+        tools:ignore="HardcodedText,RtlHardcoded"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -193,16 +199,18 @@
 
         android:text="Description:"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/DescriptionEditText"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/DescriptionEditText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.524"
+        app:layout_constraintVertical_bias="0.265"
         tools:ignore="HardcodedText,RtlHardcoded"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -214,20 +222,20 @@
 
         android:text="Picture:"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/ChildrenEditText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
+        app:layout_constraintVertical_bias="0.75"
         tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/LocEditText"
-        android:layout_width="140dip"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="116dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:inputType="none"
@@ -238,12 +246,18 @@
         android:textCursorDrawable="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="LabelFor,RtlHardcoded,UnusedAttribute"
-        android:layout_marginRight="102dp"
-        app:layout_constraintLeft_toRightOf="@+id/textView3"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.983" />
+        android:layout_marginRight="116dp"
+        android:layout_marginLeft="116dp"
+        app:layout_constraintHorizontal_bias="0.26"
+        android:layout_marginStart="116dp"
+        app:layout_constraintTop_toTopOf="@+id/flagEText"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="177dp"
+        app:layout_constraintVertical_bias="0.25"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/DescriptionEditText"
@@ -258,38 +272,111 @@
         android:textColorHint="@color/colorPrimaryDark"
 
         android:textCursorDrawable="@null"
-        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintLeft_toRightOf="@+id/textView6"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="LabelFor,UnusedAttribute"
         app:layout_constraintTop_toTopOf="@+id/ChildrenEditText"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/button1"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="0.29000002" />
 
     <EditText
         android:id="@+id/ChildrenEditText"
-        android:layout_width="220dip"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
-
         android:textCursorDrawable="@null"
-        tools:ignore="LabelFor,UnusedAttribute"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/LocEditText"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/textView5"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintBottom_toBottomOf="@+id/DescriptionEditText"
+        app:layout_constraintHorizontal_bias="0.08"
+
+        app:layout_constraintLeft_toRightOf="@+id/textView5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.100000024"
+        tools:ignore="LabelFor,UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.32999998" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Phone:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button1"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        tools:ignore="HardcodedText"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintVertical_bias="0.53999996"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:ems="10"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintLeft_toRightOf="@+id/textView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DescriptionEditText"
+        app:layout_constraintVertical_bias="0.754"
+        tools:ignore="LabelFor,UnusedAttribute"
+        android:maxLines="1"
+        app:layout_constraintHorizontal_bias="0.78"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/VolunteerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Add Person You Know"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        tools:ignore="HardcodedText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.57"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

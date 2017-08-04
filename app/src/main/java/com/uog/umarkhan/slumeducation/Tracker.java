@@ -1,4 +1,4 @@
-package com.example.umarkhan.slumeducation;
+package com.uog.umarkhan.slumeducation;
 
 import android.content.Context;
 import android.content.DialogInterface;

@@ -1,4 +1,4 @@
-package com.example.umarkhan.slumeducation;
+package com.uog.umarkhan.slumeducation;
 
 import android.graphics.Bitmap;
 import android.location.Address;

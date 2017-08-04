@@ -1,4 +1,4 @@
-package com.example.umarkhan.slumeducation;
+package com.uog.umarkhan.slumeducation;
 
 import android.*;
 import android.Manifest;
@@ -32,8 +32,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -48,6 +50,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.uog.umarkhan.slumeducation.LocationDetails;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -59,7 +62,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button b, b1, detailsBtn;
+    Button b, b1, detailsBtn,volunteerBtn;
     private static final int SELECT_IMAGE = 1;
     private static final int Request_Camera_Code = 2;
     private StorageReference mStorage;
@@ -70,11 +73,12 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog mDialog;
     Uri downloadUri, ImageUri;
     ImageView iv;
-    EditText name, description, noOfChildren, FlagEtext, Loc;
-    String Id, Name, Description, ImageUrl, NoOfChildren,Location;
+    TextView ScrollTextView;
+    EditText name, description, noOfChildren, FlagEtext, Loc,userPhone;
+    String Id, Name, Description, ImageUrl, NoOfChildren,Location,UserPhone,volunteerName,volunteerPhone;
+    Dialog questionDiolog;
 
-
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, TextViewDBReference;
     private LocationDetails mLocationDetails;
     private LocationDetails RetrieverObject;
     private Tracker tracker;
@@ -85,9 +89,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        titleText();
 
         int PERMISSION_ALL = 1;
-        String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION,
+        String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION,
                 android.Manifest.permission.WRITE_GSERVICES, android.Manifest.permission.INTERNET, Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.CHANGE_NETWORK_STATE, Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -101,17 +106,22 @@ public class MainActivity extends AppCompatActivity {
 
         mStorage = FirebaseStorage.getInstance().getReference();
         mDialog = new ProgressDialog(this);
+        questionDiolog = new Dialog(this);
 
 
         //  FlagEtext=(EditText)findViewById(R.id.flagEText);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("UserDetails");
+
 
         b = (Button) findViewById(R.id.button1);
         // b1=(Button)findViewById(R.id.button2) ;
+
         detailsBtn = (Button) findViewById(R.id.details);
-        iv = (ImageView) findViewById(R.id.imageView1);
-        iv.setImageResource(R.drawable.logo);
+        //  iv = (ImageView) findViewById(R.id.imageView1);
+
+        volunteerBtn=(Button)findViewById(R.id.VolunteerButton);
+        ScrollTextView = (TextView) findViewById(R.id.ScrolltextView);
 
 
         name = (EditText) findViewById(R.id.flagEText);
@@ -119,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
         noOfChildren = (EditText) findViewById(R.id.ChildrenEditText);
         Loc = (EditText) findViewById(R.id.LocEditText);
         Loc.setEnabled(false);
+
+        userPhone = (EditText) findViewById(R.id.editTextPhone);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,21 +141,23 @@ public class MainActivity extends AppCompatActivity {
                     Name = name.getText().toString();
                     Description = description.getText().toString();
                     NoOfChildren = noOfChildren.getText().toString();
+                    UserPhone = userPhone.getText().toString();
 
 
-                    if (Name.isEmpty() || Description.isEmpty() || NoOfChildren.isEmpty()) {
+                    if (Name.isEmpty() || Description.isEmpty() || NoOfChildren.isEmpty() || UserPhone.isEmpty()) {
 
                         Toast.makeText(getApplicationContext(), "Please Fill All Fields", Toast.LENGTH_LONG).show();
 
                     } else {
                         if (NoOfChildren.matches((".*\\d+.*"))) {
 
+
                             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             startActivityForResult(intent, Request_Camera_Code);
 
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "PLZ Enter Numeric values in No of Children", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Please Enter Numeric Values in No. of Children", Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -161,12 +175,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                RetrievingValues();
+
 
                 checkGPS = tracker.getLocation();
                 //  Toast.makeText(getApplicationContext(),tracker.getLatitude()+" "+tracker.getLongitude(),Toast.LENGTH_LONG).show();
                 if (checkGPS) {
-
+                    RetrievingValues();
                     Intent intent = new Intent(MainActivity.this, MapsActivity.class);
 
                     intent.putExtra("Key", list);
@@ -176,24 +190,71 @@ public class MainActivity extends AppCompatActivity {
 
 
                     //Getting Address of the location
-                    String loc=getLocationString();
+                    String loc = getLocationString();
                     Loc.setText(loc);
 
                 }
 
-
             }
         });
 
+        volunteerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(Id!=null) {
+                    final AlertDialog builder = new AlertDialog.Builder(MainActivity.this).create();
+                    builder.setTitle("Do You Know Anyone?");
+                    builder.setMessage("If You Know any Person Working Here for Slum Education Please Provide Us His/Her Name and Contact Number. \n\nDo You Know Anyone in the Area? \n Press \"Yes\" to Proceed. \n Press \"No\" to Continue Entering Details.");
+                    builder.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Intent intent1 = new Intent(MainActivity.this, UserDetailActivity.class);
+                            startActivityForResult(intent1, 321);
+                            builder.dismiss();
+
+                        }
+                    });
+                    builder.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            builder.dismiss();
+                        }
+                    });
+                    builder.show();
+
+                }
+
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"First give your Details",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
-
-
     //onActivityResult for showing dialogbox to enter details from user
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==321 && resultCode==RESULT_OK)
+        {
+           volunteerName=data.getStringExtra("name");
+            volunteerPhone=data.getStringExtra("phone");
+
+            mLocationDetails.setVolunteerName(volunteerName);
+            mLocationDetails.setVolunteerPhone(volunteerPhone);
+
+            databaseReference.child(Id).setValue(mLocationDetails);
+
+            Toast.makeText(getApplicationContext(),"Volunteer Added Sucessfully",Toast.LENGTH_SHORT).show();
+
+
+        }
+
 
         if (requestCode == Request_Camera_Code && resultCode == RESULT_OK) {
 
@@ -255,24 +316,27 @@ public class MainActivity extends AppCompatActivity {
                         NoOfChildren = noOfChildren.getText().toString();
                        Location=getLocationString();
                         Loc.setText(Location);
+                        UserPhone=userPhone.getText().toString();
 
 
                         longitude = tracker.getLongitude();
                         latitude = tracker.getLatitude();
 
                         Id = databaseReference.push().getKey();
-                        mLocationDetails = new LocationDetails(Id, Name,Location, Description, imageUrl, NoOfChildren);
+                        mLocationDetails = new LocationDetails(Id, Name,Location, Description, imageUrl, NoOfChildren,UserPhone,volunteerName,volunteerPhone);
 
                         mLocationDetails.setLatitude(latitude);
                         mLocationDetails.setLongitude(longitude);
 
                         databaseReference.child(Id).setValue(mLocationDetails);
 
-                        Toast.makeText(getApplicationContext(), "Details Added Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Details Added Successfully", Toast.LENGTH_LONG).show();
 
                         name.setText(null);
                         description.setText(null);
                         noOfChildren.setText(null);
+                        userPhone.setText(null);
+                        Loc.setText(null);
                         name.requestFocus();
 
 
@@ -307,13 +371,29 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot LocationData : dataSnapshot.getChildren()) {
                     LocationDetails ld = LocationData.getValue(LocationDetails.class);
                     list.add(ld);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+    public  void titleText(){
+        TextViewDBReference=FirebaseDatabase.getInstance().getReference("TextTable");
+      // TextTable tb=new TextTable("ABC");
+      //  TextViewDBReference.setValue(tb);
 
+        TextViewDBReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String abc="";
+                for( DataSnapshot TitleDatasnapShot : dataSnapshot.getChildren()) {
+                 abc=  TitleDatasnapShot.getValue(String.class);
                 }
 
+                ScrollTextView.setText(abc);
 
-                // String abc = String.valueOf(list.get(0));
-                //Toast.makeText(getApplicationContext(),abc,Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -322,7 +402,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public static boolean hasPermissions(Context context, String... permissions) {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -361,6 +440,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return abc;
     }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -1,4 +1,4 @@
-package com.example.umarkhan.slumeducation;
+package com.uog.umarkhan.slumeducation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.umarkhan.slumeducation", appContext.getPackageName());
+        assertEquals("com.uog.umarkhan.slumeducation", appContext.getPackageName());
     }
 }
